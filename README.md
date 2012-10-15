@@ -1,4 +1,4 @@
 p3applet
 ========
 
-Trabalho para a meteria de P3 UFAL
+Trabalho para a meteria P3 UFAL
