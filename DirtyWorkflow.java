@@ -72,6 +72,8 @@ public class DirtyWorkflow extends JApplet {
         p.add(new JToggleButton("Processo")); 
         p.add(new JToggleButton("Seta")); 
         p.add(new JToggleButton("Decisao")); 
+        p.add(new JToggleButton("Label")); 
+        p.add(new JToggleButton("Mensagem")); 
         // p.setLayout(new BoxLayout());
         pane.add(p, BorderLayout.WEST);
     }
