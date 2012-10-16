@@ -14,8 +14,12 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Container;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 
-public class DirtyWorkflow extends JApplet {
+
+public class DirtyWorkflow extends JApplet  implements MouseListener, MouseMotionListener {
 
     JMenu jmenu_arquivo, jmenu_help;
     JMenuBar jmenuBar;
@@ -23,6 +27,7 @@ public class DirtyWorkflow extends JApplet {
 
     JButton b_proc, b_decis, b_seta;
     FlowLayout layout;
+    MainWindow mainWindow;
 
     public void init() {
         resize(width, height);
@@ -60,10 +65,14 @@ public class DirtyWorkflow extends JApplet {
 
         setJMenuBar(jmenuBar);
 
-        add(new MainWindow());
+        mainWindow = new MainWindow();
+        add(mainWindow);
 
         layout = new FlowLayout();
         addComponentsToPane(getContentPane());
+
+        addMouseListener(this);
+        addMouseMotionListener(this);
     }
 
     public void addComponentsToPane(final Container pane) {
@@ -77,6 +86,16 @@ public class DirtyWorkflow extends JApplet {
         // p.setLayout(new BoxLayout());
         pane.add(p, BorderLayout.WEST);
     }
+
+    public void mouseClicked(MouseEvent e) {  }
+    public void mouseEntered(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) {  }
+    public void mousePressed(MouseEvent e) { mainWindow.mousePressed(e); }
+    public void mouseReleased(MouseEvent e) { }
+
+    public void mouseDragged(MouseEvent e) { }
+    public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); } 
+
 }
 
 
