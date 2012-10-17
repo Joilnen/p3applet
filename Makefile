@@ -1,5 +1,5 @@
 all:
-	javac DirtyWorkflow.java
+	javac -Xlint:unchecked DirtyWorkflow.java
 clean:
 	rm -f *.class *~ *.sw*
 

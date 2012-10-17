@@ -18,7 +18,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 
-
+//! Classe inicial 
 public class DirtyWorkflow extends JApplet  implements MouseListener, MouseMotionListener {
 
     JMenu jmenu_arquivo, jmenu_help;
@@ -92,7 +92,6 @@ public class DirtyWorkflow extends JApplet  implements MouseListener, MouseMotio
     public void mouseExited(MouseEvent e) {  }
     public void mousePressed(MouseEvent e) { mainWindow.mousePressed(e); }
     public void mouseReleased(MouseEvent e) { }
-
     public void mouseDragged(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); } 
 

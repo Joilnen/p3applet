@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 
-
+//! Classe da janela canvas onde sao desenhados os objetos graficos
 public class MainWindow extends JPanel implements MouseListener, MouseMotionListener {
 
     int x = 0, y = 0;
@@ -16,10 +16,13 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.LIGHT_GRAY);
         g2d.drawLine(0, 0, 500, 500);
         g2d.drawRect(x, y, 100, 100);
         g2d.drawString("To tentando usar java", 100, 100);
+        new GraphicElement();
+        NodePool n = NodePool.getInstance();
+
     }
 
     public void mouseClicked(MouseEvent e) {  }
@@ -27,8 +30,8 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void mouseExited(MouseEvent e) {  }
     public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
-
     public void mouseDragged(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { x = e.getX() - 100; y = e.getY() - 20; repaint(); } 
 }
+
 
