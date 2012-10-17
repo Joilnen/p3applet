@@ -12,8 +12,14 @@
 //!
 class ModelDataStorage {
 
-    ModelDataStorage() {
+    //! Memento
+    //! Memento para guardar o estado tenta simplificar
+    //! e gurardar os dados seguindo 
+    static ModelDataStorageMemento {
 
+    }
+
+    ModelDataStorage() {
 
     }
 }

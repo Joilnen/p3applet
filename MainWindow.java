@@ -16,7 +16,6 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     MainWindow() {
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
     }
 
     public void paint(Graphics g) {
@@ -26,18 +25,17 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         g2d.drawLine(0, 0, 500, 500);
         g2d.drawRect(x, y, 100, 100);
         g2d.drawString("To tentando usar java", 100, 100);
-        new GraphicElement();
-        NodePool n = NodePool.getInstance();
-
+        // new GraphicElement();
+        // NodePool n = NodePool.getInstance();
     }
 
-    public void mouseClicked(MouseEvent e) {  }
+    public void mouseClicked(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }
-    public void mouseExited(MouseEvent e) {  }
+    public void mouseExited(MouseEvent e) { }
     public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
+    public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
     public void mouseDragged(MouseEvent e) { }
-    public void mouseMoved(MouseEvent e) { x = e.getX() - 100; y = e.getY() - 20; repaint(); } 
 }
 
 
