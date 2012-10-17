@@ -1,10 +1,16 @@
 import java.util.List;
+import java.awt.Color;
 
 //! Classe que representa elementos graficos que
 //! serao desenhados no canvas segue o padrao de design Composite
 class GraphicElement {
 
     int x, y, dx, dy;
+
+    Color color_borda;
+    Color color_preen;
+    Color color_label;
+    Color color_descricao;
 
     String label;
     String descricao;

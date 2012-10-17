@@ -3,6 +3,7 @@ import javax.swing.JLabel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -12,6 +13,11 @@ import java.awt.event.MouseEvent;
 public class MainWindow extends JPanel implements MouseListener, MouseMotionListener {
 
     int x = 0, y = 0;
+
+    MainWindow() {
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+    }
 
     public void paint(Graphics g) {
         super.paint(g);

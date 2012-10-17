@@ -21,5 +21,10 @@ class NodePool {
     public void addNode(GraphicElement e) {
         nodes.add(e);
     }
+
+    public List<GraphicElement> getLelements() {
+        return nodes;
+    }
 }
+
 
