@@ -93,12 +93,11 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void mouseEntered(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { 
-        b_proc.setSelected(false);
-        b_seta.setSelected(false);
-        b_deci.setSelected(false);
-        b_label.setSelected(false);
-        b_mens.setSelected(false);
-        ((JToggleButton) e.getSource()).setSelected(true);
+        if(e.getSource() != b_proc) b_proc.setSelected(false);
+        if(e.getSource() != b_seta) b_seta.setSelected(false);
+        if(e.getSource() != b_deci) b_deci.setSelected(false);
+        if(e.getSource() != b_label) b_label.setSelected(false);
+        if(e.getSource() != b_mens) b_mens.setSelected(false);
         if(e.getSource() == b_proc) {
 
         }
