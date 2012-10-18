@@ -1,6 +1,7 @@
 import java.util.List;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 //! Classe que representa elementos graficos que
 //! serao desenhados no canvas segue o padrao de design Composite
@@ -15,6 +16,8 @@ class GraphicElement {
 
     String label;
     String descricao;
+
+	Rectangle bound;
  
     // Nao usar out por enquanto passei a responsabilidade
     // disso para Connection
@@ -46,6 +49,7 @@ class GraphicElement {
             dy = 100;
         }
 
+		bound = new Rectangle(x, y, dx, dy);
         represent = Represent.NODE_SHOW;
     }
 
@@ -83,6 +87,16 @@ class GraphicElement {
             g2d.fillPolygon(x_l, y_l, 4);
         }
     }
+
+	public Rectangle getBound() {
+
+		bound.x = x;
+		bound.y = y;
+		bound.width = dx;
+		bound.height = dy;
+
+		return bound;
+	}
 }
 
 //! Tipo do Elemento grafico, um unico objeto representa
@@ -94,6 +108,7 @@ class GraphicElementType {
     static int NODE_MENS = 1003;
 }
 
+//! Representacao do objeto grafico q pode
 class Represent {
     static int NODE_SHOW = 1000;
     static int NODE_HIDE = 1001;

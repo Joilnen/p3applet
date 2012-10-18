@@ -94,7 +94,9 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
 
     public void mouseExited(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }
-    public void mouseReleased(MouseEvent e) { }
+    public void mouseReleased(MouseEvent e) { 
+		mainWindow.resetSetaSense();
+	}
     public void mouseClicked(MouseEvent e) { 
 
         if(e.getSource() instanceof JToggleButton) {
@@ -135,7 +137,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                 mainWindow.addEntity(g);
                 // JOptionPane.showMessageDialog(null, "Adicionei !");
             }
-            else if(e.getSource() == b_seta) {
+            else if(b_seta.isSelected()) {
 
             }
             else if(b_deci.isSelected()) {
@@ -155,7 +157,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
         }
     }
 
-    public void mousePressed(MouseEvent e) { }
+    public void mousePressed(MouseEvent e) { mainWindow.setSetaSense(); }
     public void mouseDragged(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); }
 }
