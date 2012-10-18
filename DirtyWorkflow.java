@@ -109,8 +109,9 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
             else if(e.getSource() == b_seta) {
 
             }
-            else if(e.getSource() == b_deci) {
-
+            else if(b_deci.isSelected()) {
+                mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
+                mainWindow.repaint();
             }
             else if(e.getSource() == b_label) {
 

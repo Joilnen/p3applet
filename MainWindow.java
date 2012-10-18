@@ -27,7 +27,11 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         // g2d.drawLine(0, 0, 500, 500);
         if(withMousePointer == WithMousePointerType.PROCESS_GRAY_BORDER) {
             g2d.drawRoundRect(x, y, 150, 100, 15, 15);
-            g2d.rotate(90);
+        }
+        else if(withMousePointer == WithMousePointerType.DECISION_GRAY_BORDER) {
+            int[] x_l = {x + 0, x + 50, x + 100, x + 50};
+            int[] y_l = {y + 50, y + 0, y + 50, y + 100}; 
+            g2d.drawPolygon( x_l, y_l, 4);
         }
         // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
