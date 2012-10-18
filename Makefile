@@ -3,7 +3,7 @@ all:
 clean:
 	rm -f *.class *~ *.sw*
 git_add:
-	git add *.java Makefile
+	git add *.java Makefile doc
 commit: git_add
 	git commit
 push:

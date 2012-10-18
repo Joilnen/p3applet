@@ -16,10 +16,6 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     int withMousePointer;
 
-    MainWindow() {
-        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-    }
-
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
@@ -48,6 +44,13 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     public void setWithMousePointer(int t) {
         withMousePointer = t;
+
+        /*** Pra mudar ponteiro do mouse
+        if(t == WithMousePointerType.PROCESS_GRAY_BORDER || t == WithMousePointerType.DECISION_GRAY_BORDER)
+            setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        else
+            setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        ***/
         x = y = 0;
     }
 }
