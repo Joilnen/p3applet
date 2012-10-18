@@ -14,6 +14,8 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     int x = 0, y = 0;
 
+    int withMousePointer;
+
     MainWindow() {
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
@@ -22,9 +24,12 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         super.paint(g);
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.LIGHT_GRAY);
-        g2d.drawLine(0, 0, 500, 500);
-        g2d.drawRect(x, y, 100, 100);
-        g2d.drawString("To tentando usar java", 100, 100);
+        // g2d.drawLine(0, 0, 500, 500);
+        if(withMousePointer == WithMousePointerType.PROCESS_GRAY_BORDER) {
+            g2d.drawRoundRect(x, y, 150, 100, 15, 15);
+            g2d.rotate(90);
+        }
+        // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
         // NodePool n = NodePool.getInstance();
     }
@@ -36,6 +41,21 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void mouseReleased(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
     public void mouseDragged(MouseEvent e) { }
+
+    public void setWithMousePointer(int t) {
+        withMousePointer = t;
+        x = y = 0;
+    }
+}
+
+//! Tipo de desenho feio quando for fazer algum desses no canvas
+class WithMousePointerType {
+    static int NONE = 1000;
+    static int PROCESS_GRAY_BORDER = 1001;
+    static int CONNECT_ONE_TO_ONE = 1002;
+    static int WRITE_MENS = 1003;
+    static int DECISION_GRAY_BORDER = 1004;
+    static int WRITE_LABEL = 1005;
 }
 
 

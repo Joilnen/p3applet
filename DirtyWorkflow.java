@@ -93,19 +93,36 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void mouseEntered(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { 
-        if(e.getSource() != b_proc) b_proc.setSelected(false);
-        if(e.getSource() != b_seta) b_seta.setSelected(false);
-        if(e.getSource() != b_deci) b_deci.setSelected(false);
-        if(e.getSource() != b_label) b_label.setSelected(false);
-        if(e.getSource() != b_mens) b_mens.setSelected(false);
-        if(e.getSource() == b_proc) {
+        if(e.getSource() instanceof JToggleButton) {
+            if(e.getSource() != b_proc) b_proc.setSelected(false);
+            if(e.getSource() != b_seta) b_seta.setSelected(false);
+            if(e.getSource() != b_deci) b_deci.setSelected(false);
+            if(e.getSource() != b_label) b_label.setSelected(false);
+            if(e.getSource() != b_mens) b_mens.setSelected(false);
 
+            mainWindow.setWithMousePointer(WithMousePointerType.NONE);
+            mainWindow.repaint();
+            if(b_proc.isSelected()) {
+                mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                mainWindow.repaint();
+            }
+            else if(e.getSource() == b_seta) {
+
+            }
+            else if(e.getSource() == b_deci) {
+
+            }
+            else if(e.getSource() == b_label) {
+
+            }
+            else if(e.getSource() == b_mens) {
+
+            }
         }
     }
     public void mousePressed(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); }
     public void mouseDragged(MouseEvent e) { }
-
 }
 
 
