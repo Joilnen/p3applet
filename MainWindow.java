@@ -39,8 +39,8 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void mouseExited(MouseEvent e) { }
     public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
-    public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
     public void mouseDragged(MouseEvent e) { }
+    public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
 
     public void setWithMousePointer(int t) {
         withMousePointer = t;

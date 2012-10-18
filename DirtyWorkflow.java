@@ -28,6 +28,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     MainWindow mainWindow;
 
     public void init() {
+
         resize(width, height);
         jmenuBar = new JMenuBar();
 
@@ -72,6 +73,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     }
 
     public void addComponentsToPane(final Container pane) {
+
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         // p.setLayout(new BoxLayout());
@@ -93,7 +95,9 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void mouseEntered(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { 
+
         if(e.getSource() instanceof JToggleButton) {
+
             if(e.getSource() != b_proc) b_proc.setSelected(false);
             if(e.getSource() != b_seta) b_seta.setSelected(false);
             if(e.getSource() != b_deci) b_deci.setSelected(false);
@@ -102,6 +106,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
 
             mainWindow.setWithMousePointer(WithMousePointerType.NONE);
             mainWindow.repaint();
+
             if(b_proc.isSelected()) {
                 mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
                 mainWindow.repaint();
@@ -120,10 +125,31 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
 
             }
         }
+        else {
+            if(b_proc.isSelected()) {
+                // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                // mainWindow.repaint();
+            }
+            else if(e.getSource() == b_seta) {
+
+            }
+            else if(b_deci.isSelected()) {
+                mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
+                mainWindow.repaint();
+            }
+            else if(e.getSource() == b_label) {
+
+            }
+            else if(e.getSource() == b_mens) {
+
+            }
+
+        }
     }
+
     public void mousePressed(MouseEvent e) { }
-    public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); }
     public void mouseDragged(MouseEvent e) { }
+    public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); }
 }
 
 
