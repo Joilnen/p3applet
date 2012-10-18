@@ -22,7 +22,7 @@ class NodePool {
         nodes.add(e);
     }
 
-    public List<GraphicElement> getLelements() {
+    public List<GraphicElement> getElements() {
         return nodes;
     }
 }

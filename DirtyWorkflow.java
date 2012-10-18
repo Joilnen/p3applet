@@ -2,6 +2,7 @@ import javax.swing.JApplet;
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import java.awt.Dimension;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -127,13 +128,18 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
         }
         else {
             if(b_proc.isSelected()) {
+                // mudar soh para teste
+                GraphicElement g = new GraphicElement(GraphicElementType.NODE_PROC);
                 // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
                 // mainWindow.repaint();
+                mainWindow.addEntity(g);
+                JOptionPane.showMessageDialog(null, "Adicionei o graphic element");
             }
             else if(e.getSource() == b_seta) {
 
             }
             else if(b_deci.isSelected()) {
+                // mudar soh para teste
                 mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
                 mainWindow.repaint();
             }
@@ -143,7 +149,6 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
             else if(e.getSource() == b_mens) {
 
             }
-
         }
     }
 

@@ -1,5 +1,6 @@
 import java.util.List;
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 //! Classe que representa elementos graficos que
 //! serao desenhados no canvas segue o padrao de design Composite
@@ -18,20 +19,71 @@ class GraphicElement {
     // Nao usar out por enquanto passei a responsabilidade
     // disso para Connection
     List in, out;
-    GraphicElementType type;
+    int type; // GraphicElementType
+    int represent; // Represent
 
     //! Utilisado apenas quando o elemento eh coneccao para pinta a ponta 
     //! da seta
     boolean arrow_1, arrow_2;
 
-    GraphicElement() {
+    GraphicElement(int a) {
+        type = a;
+        color_borda = new Color(0, 0, 0, 1);
+        color_preen = new Color(1, 0, 0, 1);
+        if(type == GraphicElementType.NODE_PROC) {
+            x = y = 0;
+            dx = 150;
+            dy = 100;
+        }
+        if(type == GraphicElementType.NODE_DECI) {
+            x = y = 0;
+            dx = 50;
+            dy = 100;
+        }
 
+        represent = Represent.NODE_SHOW;
+    }
+
+    public void setX(int i) {
+        x = i;
+    }
+
+    public int getX() { return x; }
+
+    public void setY(int i) {
+        y = i;
+    }
+
+    public int getY() { return y; }
+
+    public int getDx() { return dx; }
+    public int getDy() { return dy; }
+    
+    void setType(int a) {
+       type = a; 
+    }
+    public int getType() { return type; }
+
+    void setRepresent(int a) {
+        represent = a;
+    }
+
+    void paint(Graphics2D g2d) {
+        if(type == GraphicElementType.NODE_PROC) {
+            g2d.setColor(color_borda);
+            g2d.fillRoundRect(x, y, 150, 100, 15, 15);
+        }
+        if(type == GraphicElementType.NODE_DECI) {
+            int[] x_l = {x + 0, x + 50, x + 100, x + 50};
+            int[] y_l = {y + 50, y + 0, y + 50, y + 100}; 
+            g2d.fillPolygon( x_l, y_l, 4);
+        }
     }
 }
 
 //! Tipo do Elemento grafico, um unico objeto representa
-//! qualquer objeto isto aqui o distingue
-class GraphicElementType {
+//! qualquer objeto isto aqui o distingue class GraphicElementType {
+class GraphicElementType { 
     static int NODE_PROC = 1000;
     static int NODE_DECI = 1001;
     static int NODE_CONN = 1002;
