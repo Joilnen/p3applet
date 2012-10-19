@@ -133,15 +133,18 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                 // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
                 // mainWindow.repaint();
                 mainWindow.addEntity(g);
-                JOptionPane.showMessageDialog(null, "Adicionei o graphic element");
+                // JOptionPane.showMessageDialog(null, "Adicionei !");
             }
             else if(e.getSource() == b_seta) {
 
             }
             else if(b_deci.isSelected()) {
                 // mudar soh para teste
-                mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
-                mainWindow.repaint();
+                GraphicElement g = new GraphicElement(GraphicElementType.NODE_DECI);
+                // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                // mainWindow.repaint();
+                mainWindow.addEntity(g);
+
             }
             else if(e.getSource() == b_label) {
 

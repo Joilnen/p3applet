@@ -27,16 +27,21 @@ class GraphicElement {
     boolean arrow_1, arrow_2;
 
     GraphicElement(int a) {
+
         type = a;
         color_borda = new Color(0, 0, 0, 1);
         color_preen = new Color(1, 0, 0, 1);
+
+        x = y = 0;
+        dx = 150;
+        dy = 100;
+
         if(type == GraphicElementType.NODE_PROC) {
-            x = y = 0;
             dx = 150;
             dy = 100;
         }
+
         if(type == GraphicElementType.NODE_DECI) {
-            x = y = 0;
             dx = 50;
             dy = 100;
         }
@@ -53,7 +58,6 @@ class GraphicElement {
     public void setY(int i) {
         y = i;
     }
-
     public int getY() { return y; }
 
     public int getDx() { return dx; }
@@ -69,14 +73,14 @@ class GraphicElement {
     }
 
     void paint(Graphics2D g2d) {
+        g2d.setColor(color_preen);
         if(type == GraphicElementType.NODE_PROC) {
-            g2d.setColor(color_borda);
             g2d.fillRoundRect(x, y, 150, 100, 15, 15);
         }
         if(type == GraphicElementType.NODE_DECI) {
             int[] x_l = {x + 0, x + 50, x + 100, x + 50};
             int[] y_l = {y + 50, y + 0, y + 50, y + 100}; 
-            g2d.fillPolygon( x_l, y_l, 4);
+            g2d.fillPolygon(x_l, y_l, 4);
         }
     }
 }

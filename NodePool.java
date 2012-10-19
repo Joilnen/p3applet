@@ -6,13 +6,13 @@ import java.util.ArrayList;
 //! segue padrao Singleton
 class NodePool {
 
-    List<GraphicElement> nodes = new ArrayList<GraphicElement>();;
+    List<GraphicElement> nodes = new ArrayList<GraphicElement>();
 
     static NodePool n =  null;
 
     public static NodePool getInstance() {
         if(n == null)
-            return new NodePool();
+            n = new NodePool();
         return n;
     }
 
