@@ -37,37 +37,31 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         // NodePool.getInstance().addNode(new GraphicElement(GraphicElementType.NODE_PROC));
         for(GraphicElement ge: NodePool.getInstance().getElements()) {
             if(ge.getType() == GraphicElementType.NODE_PROC) {
-                //g2d.rectRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15);
-                //g2d.drawRoundRect(300, 300, 150, 100, 15, 15);
-       //         ge.paint(g);
-                  g2d.setColor(Color.GREEN);
-                  g2d.drawRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15); 
-                  g2d.setColor(Color.BLUE);
-                  g2d.fillRoundRect(ge.getX()+1, ge.getY()+1, 150 - 1, 100 - 1, 15, 15); 
+                  // Descomentar para ter borda
+                  // g2d.setColor(Color.BLACK);
+                  g2d.setColor(Color.GRAY);
+                  g2d.fillRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15); 
+                  // g2d.fillRoundRect(ge.getX()+1, ge.getY()+1, 150 - 1, 100 - 1, 15, 15); 
             }
             else if(ge.getType() == GraphicElementType.NODE_DECI) {
-                //g2d.rectRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15);
-                //g2d.drawRoundRect(300, 300, 150, 100, 15, 15);
-       //         ge.paint(g);
                   int aqui_x = ge.getX(), aqui_y = ge.getY();
                   int[] x_l = {aqui_x + 0, aqui_x + 50, aqui_x + 100, aqui_x + 50};
                   int[] y_l = {aqui_y + 50, aqui_y + 0, aqui_y + 50, aqui_y + 100}; 
-                  g2d.setColor(Color.GREEN);
-                  g2d.drawPolygon(x_l, y_l, 4);
-                  // Comentarios soh p ajudar a entender 
-                  x_l[0]++;
+                  // Descomentar para ter borda
+                  // g2d.setColor(Color.BLACK);
+                  // g2d.drawPolygon(x_l, y_l, 4);
+                  // Comentarios do tipo //x_l[1] soh p ajudar a entender 
+                  // x_l[0]++;
                   // x_l[1];
-                  x_l[2]--;
+                  // x_l[2]--;
                   // x_l[3];
                   // y_l[0];
-                  y_l[1]++;
+                  // y_l[1]++;
                   // y_l[2];
-                  y_l[3]--;
-                  g2d.setColor(Color.YELLOW);
+                  // y_l[3]--;
+                  g2d.setColor(Color.GRAY);
                   g2d.fillPolygon(x_l, y_l, 4);
             }
-
-
         }
         // Contador apenas pra debug
         // g2d.drawString(String.valueOf(NodePool.getInstance().getElements().size()), 300, 300);
