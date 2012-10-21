@@ -16,6 +16,9 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     int withMousePointer;
 
+    GraphicElement seta;
+    public boolean setaTracing = false;
+
     public void paint(Graphics g) {
 
         super.paint(g);
@@ -30,6 +33,11 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
             int[] y_l = {y + 50, y + 0, y + 50, y + 100}; 
             g2d.setColor(Color.LIGHT_GRAY);
             g2d.drawPolygon( x_l, y_l, 4);
+        }
+        else if(setaTracing && withMousePointer == WithMousePointerType.CONNECT_ONE_TO_ONE) { 
+            g2d.setColor(Color.LIGHT_GRAY);
+            seta.setDx(x); seta.setDy(y);
+            g2d.drawLine(seta.getX(), seta.getY(), seta.getDx(), seta.getDy());
         }
         // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
@@ -51,12 +59,12 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void setWithMousePointer(int t) {
         withMousePointer = t;
 
-        /*** Pra mudar ponteiro do mouse
         if(t == WithMousePointerType.PROCESS_GRAY_BORDER || t == WithMousePointerType.DECISION_GRAY_BORDER)
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        else if(t == WithMousePointerType.CONNECT_ONE_TO_ONE)
+            setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
         else
             setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        ***/
         x = y = 0;
     }
 
@@ -66,6 +74,16 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         NodePool.getInstance().addNode(ge);
     }
 
+    void addSetaInicio(GraphicElement ge) {
+        seta = ge;
+        seta.setX(x); seta.setY(y);
+        setaTracing = true;
+    }
+
+    void addSetaFim() {
+        setaTracing = false;
+        NodePool.getInstance().addNode(seta);
+    }
 
     void pintaObjeto(Graphics2D g2d) {
 
@@ -95,6 +113,10 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
                   // y_l[3]--;
                   g2d.setColor(Color.decode("0xEDCE9E"));
                   g2d.fillPolygon(x_l, y_l, 4);
+            }
+            else if(ge.getType() == GraphicElementType.NODE_CONN) { 
+                g2d.setColor(Color.RED);
+                g2d.drawLine(ge.getX(), ge.getY(), ge.getDx(), ge.getDy());
             }
         }
 

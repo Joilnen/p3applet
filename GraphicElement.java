@@ -60,7 +60,13 @@ class GraphicElement {
     }
     public int getY() { return y; }
 
+    public void setDx(int i) {
+        dx = i;
+    }
     public int getDx() { return dx; }
+    public void setDy(int i) {
+        dy = i;
+    }
     public int getDy() { return dy; }
     
     void setType(int a) {
