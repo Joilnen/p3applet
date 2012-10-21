@@ -18,7 +18,7 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     GraphicElement seta;
     public boolean setaTracing = false;
-    public boolean mensWriting = false;
+    public boolean editTextEnabled = false;
 
     public void paint(Graphics g) {
 
@@ -82,6 +82,10 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         seta = ge;
         seta.setX(x); seta.setY(y);
         setaTracing = true;
+    }
+
+    void enableEditTextMode() {
+        editTextEnabled = true;
     }
 
     void addSetaFim() {
