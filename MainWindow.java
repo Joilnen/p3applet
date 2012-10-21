@@ -16,8 +16,12 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     int withMousePointer;
 
+<<<<<<< HEAD
     GraphicElement seta;
     public boolean setaTracing = false;
+=======
+	int setaSense = 0;
+>>>>>>> 3ca09b4cf319f191ca72f377ef0938e1e726b657
 
     public void paint(Graphics g) {
 
@@ -29,16 +33,24 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
             g2d.drawRoundRect(x, y, 150, 100, 15, 15);
         }
         else if(withMousePointer == WithMousePointerType.DECISION_GRAY_BORDER) {
-            int[] x_l = {x + 0, x + 50, x + 100, x + 50};
-            int[] y_l = {y + 50, y + 0, y + 50, y + 100}; 
+            int[] x_l = {x + 0, x + 30, x + 60, x + 30};
+            int[] y_l = {y + 30, y + 0, y + 30, y + 60}; 
             g2d.setColor(Color.LIGHT_GRAY);
             g2d.drawPolygon( x_l, y_l, 4);
         }
+<<<<<<< HEAD
         else if(setaTracing && withMousePointer == WithMousePointerType.CONNECT_ONE_TO_ONE) { 
             g2d.setColor(Color.LIGHT_GRAY);
             seta.setDx(x); seta.setDy(y);
             g2d.drawLine(seta.getX(), seta.getY(), seta.getDx(), seta.getDy());
         }
+=======
+		else if(withMousePointer == WithMousePointerType.CONNECT_ONE_TO_ONE && setaSense == 1) {
+			g2d.setColor(Color.RED);
+			g2d.drawLine(0, 0, 300, 300);
+		}
+
+>>>>>>> 3ca09b4cf319f191ca72f377ef0938e1e726b657
         // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
         // NodePool n = NodePool.getInstance();
@@ -51,10 +63,27 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     public void mouseClicked(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }
-    public void mousePressed(MouseEvent e) { }
-    public void mouseReleased(MouseEvent e) { }
+    public void mousePressed(MouseEvent e) { setaSense = 1; }
+    public void mouseReleased(MouseEvent e) {
+		if(setaSense == 1)
+			setaSense = 2;
+		else
+			setaSense = 0;
+	}
+
     public void mouseDragged(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
+
+	public void setSetaSense() {
+		setaSense = 1;
+	}
+
+	public void resetSetaSense() {
+		if(setaSense == 1)
+			setaSense = 2;
+		else
+			setaSense = 0;
+	}
 
     public void setWithMousePointer(int t) {
         withMousePointer = t;
@@ -74,6 +103,7 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         NodePool.getInstance().addNode(ge);
     }
 
+<<<<<<< HEAD
     void addSetaInicio(GraphicElement ge) {
         seta = ge;
         seta.setX(x); seta.setY(y);
@@ -85,9 +115,12 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
         NodePool.getInstance().addNode(seta);
     }
 
+=======
+>>>>>>> 3ca09b4cf319f191ca72f377ef0938e1e726b657
     void pintaObjeto(Graphics2D g2d) {
 
         for(GraphicElement ge: NodePool.getInstance().getElements()) {
+
             if(ge.getType() == GraphicElementType.NODE_PROC) {
                   // Descomentar para ter borda
                   // g2d.setColor(Color.BLACK);
@@ -97,8 +130,8 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
             }
             else if(ge.getType() == GraphicElementType.NODE_DECI) {
                   int aqui_x = ge.getX(), aqui_y = ge.getY();
-                  int[] x_l = {aqui_x + 0, aqui_x + 50, aqui_x + 100, aqui_x + 50};
-                  int[] y_l = {aqui_y + 50, aqui_y + 0, aqui_y + 50, aqui_y + 100}; 
+                  int[] x_l = {aqui_x + 0, aqui_x + 30, aqui_x + 60, aqui_x + 30};
+                  int[] y_l = {aqui_y + 30, aqui_y + 0, aqui_y + 30, aqui_y + 60}; 
                   // Descomentar para ter borda
                   // g2d.setColor(Color.BLACK);
                   // g2d.drawPolygon(x_l, y_l, 4);
@@ -119,7 +152,6 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
                 g2d.drawLine(ge.getX(), ge.getY(), ge.getDx(), ge.getDy());
             }
         }
-
     }
 }
 
