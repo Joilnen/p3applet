@@ -97,60 +97,69 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void mouseReleased(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { 
 
-        if(e.getSource() instanceof JToggleButton) {
+        if(e.getButton() == MouseEvent.BUTTON1) {
+            if(e.getSource() instanceof JToggleButton) {
 
-            if(e.getSource() != b_proc) b_proc.setSelected(false);
-            if(e.getSource() != b_seta) b_seta.setSelected(false);
-            if(e.getSource() != b_deci) b_deci.setSelected(false);
-            if(e.getSource() != b_label) b_label.setSelected(false);
-            if(e.getSource() != b_mens) b_mens.setSelected(false);
+                if(e.getSource() != b_proc) b_proc.setSelected(false);
+                if(e.getSource() != b_seta) b_seta.setSelected(false);
+                if(e.getSource() != b_deci) b_deci.setSelected(false);
+                if(e.getSource() != b_label) b_label.setSelected(false);
+                if(e.getSource() != b_mens) b_mens.setSelected(false);
 
-            mainWindow.setWithMousePointer(WithMousePointerType.NONE);
-            mainWindow.repaint();
-
-            if(b_proc.isSelected()) {
-                mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                mainWindow.setWithMousePointer(WithMousePointerType.NONE);
                 mainWindow.repaint();
-            }
-            else if(e.getSource() == b_seta) {
 
-            }
-            else if(b_deci.isSelected()) {
-                mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
-                mainWindow.repaint();
-            }
-            else if(e.getSource() == b_label) {
+                if(b_proc.isSelected()) {
+                    mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                    mainWindow.repaint();
+                }
+                else if(b_seta.isSelected()) {
+                    mainWindow.setWithMousePointer(WithMousePointerType.CONNECT_ONE_TO_ONE);
+                    mainWindow.repaint();
+                }
+                else if(b_deci.isSelected()) {
+                    mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
+                    mainWindow.repaint();
+                }
+                else if(e.getSource() == b_label) {
 
-            }
-            else if(e.getSource() == b_mens) {
+                }
+                else if(e.getSource() == b_mens) {
 
+                }
             }
-        }
-        else {
-            if(b_proc.isSelected()) {
-                // mudar soh para teste
-                GraphicElement g = new GraphicElement(GraphicElementType.NODE_PROC);
-                // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
-                // mainWindow.repaint();
-                mainWindow.addEntity(g);
-                // JOptionPane.showMessageDialog(null, "Adicionei !");
-            }
-            else if(e.getSource() == b_seta) {
+            else {
+                if(b_proc.isSelected()) {
+                    // mudar soh para teste
+                    GraphicElement g = new GraphicElement(GraphicElementType.NODE_PROC);
+                    // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                    // mainWindow.repaint();
+                    mainWindow.addEntity(g);
+                    // JOptionPane.showMessageDialog(null, "Adicionei !");
+                }
+                else if(b_seta.isSelected()) {
+                    if(mainWindow.setaTracing) {
+                        mainWindow.addSetaFim();
+                        mainWindow.setaTracing = false;
+                    }
+                    else  {
+                        mainWindow.setaTracing = true;
+                        mainWindow.addSetaInicio(new GraphicElement(GraphicElementType.NODE_CONN));
+                    }
+                }
+                else if(b_deci.isSelected()) {
+                    // mudar soh para teste
+                    GraphicElement g = new GraphicElement(GraphicElementType.NODE_DECI);
+                    // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
+                    // mainWindow.repaint();
+                    mainWindow.addEntity(g);
+                }
+                else if(e.getSource() == b_label) {
 
-            }
-            else if(b_deci.isSelected()) {
-                // mudar soh para teste
-                GraphicElement g = new GraphicElement(GraphicElementType.NODE_DECI);
-                // mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
-                // mainWindow.repaint();
-                mainWindow.addEntity(g);
+                }
+                else if(e.getSource() == b_mens) {
 
-            }
-            else if(e.getSource() == b_label) {
-
-            }
-            else if(e.getSource() == b_mens) {
-
+                }
             }
         }
     }
