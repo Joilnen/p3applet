@@ -111,22 +111,24 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
 
                 if(b_proc.isSelected()) {
                     mainWindow.setWithMousePointer(WithMousePointerType.PROCESS_GRAY_BORDER);
-                    mainWindow.repaint();
+                    // mainWindow.repaint();
                 }
                 else if(b_seta.isSelected()) {
                     mainWindow.setWithMousePointer(WithMousePointerType.CONNECT_ONE_TO_ONE);
-                    mainWindow.repaint();
+                    // mainWindow.repaint();
                 }
                 else if(b_deci.isSelected()) {
                     mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
-                    mainWindow.repaint();
+                    // mainWindow.repaint();
                 }
                 else if(e.getSource() == b_label) {
 
                 }
-                else if(e.getSource() == b_mens) {
-
+                else if(b_mens.isSelected()) {
+                    mainWindow.setWithMousePointer(WithMousePointerType.WRITE_MENS);
                 }
+                else
+                    mainWindow.setWithMousePointer(WithMousePointerType.NONE);
             }
             else {
                 if(b_proc.isSelected()) {

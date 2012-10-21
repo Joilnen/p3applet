@@ -18,6 +18,7 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     GraphicElement seta;
     public boolean setaTracing = false;
+    public boolean mensWriting = false;
 
     public void paint(Graphics g) {
 
@@ -63,8 +64,11 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         else if(t == WithMousePointerType.CONNECT_ONE_TO_ONE)
             setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+        else if(t == WithMousePointerType.WRITE_MENS) 
+            setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
         else
             setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         x = y = 0;
     }
 
@@ -115,7 +119,7 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
                   g2d.fillPolygon(x_l, y_l, 4);
             }
             else if(ge.getType() == GraphicElementType.NODE_CONN) { 
-                g2d.setColor(Color.RED);
+                g2d.setColor(Color.BLACK);
                 g2d.drawLine(ge.getX(), ge.getY(), ge.getDx(), ge.getDy());
             }
         }
