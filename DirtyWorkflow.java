@@ -15,10 +15,12 @@ import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import java.awt.Container;
 
 //! Classe inicial 
-public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotionListener {
+public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotionListener, KeyListener{
 
     JMenu jmenu_arquivo, jmenu_help;
     JMenuBar jmenuBar;
@@ -27,6 +29,8 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     JToggleButton b_proc, b_deci, b_seta, b_mens, b_label;
     FlowLayout layout;
     MainWindow mainWindow;
+
+    String text;
 
     public void init() {
 
@@ -68,6 +72,8 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
         add(mainWindow);
         mainWindow.addMouseListener(this);
         mainWindow.addMouseMotionListener(this);
+        mainWindow.addKeyListener(this);
+        addKeyListener(this);
 
         layout = new FlowLayout();
         addComponentsToPane(getContentPane());
@@ -161,6 +167,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                 }
                 else if(b_mens.isSelected()) {
                     mainWindow.enableEditTextMode();
+                    e.consume();
                 }
             }
         }
@@ -169,6 +176,17 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void mousePressed(MouseEvent e) { }
     public void mouseDragged(MouseEvent e) { }
     public void mouseMoved(MouseEvent e) { mainWindow.mouseMoved(e); }
+    public void keyReleased(KeyEvent e) { }
+    public void keyPressed(KeyEvent e) { }
+
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        if(c != KeyEvent.CHAR_UNDEFINED) {
+            mainWindow.addText(c);
+            e.consume();
+        }
+    }
+
 }
 
 

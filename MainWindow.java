@@ -10,7 +10,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseEvent;
 
 //! Classe da janela canvas onde sao desenhados os objetos graficos
-public class MainWindow extends JPanel implements MouseListener, MouseMotionListener {
+public class MainWindow extends JPanel { // implements MouseListener, MouseMotionListener {
 
     int x = 0, y = 0;
 
@@ -19,6 +19,8 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
     GraphicElement seta;
     public boolean setaTracing = false;
     public boolean editTextEnabled = false;
+    String textBuffer;
+    int x_text = 0, y_text = 0;
 
     public void paint(Graphics g) {
 
@@ -39,6 +41,12 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
             g2d.setColor(Color.LIGHT_GRAY);
             seta.setDx(x); seta.setDy(y);
             g2d.drawLine(seta.getX(), seta.getY(), seta.getDx(), seta.getDy());
+        }
+        else if(editTextEnabled && withMousePointer == WithMousePointerType.WRITE_MENS) {
+            g2d.setColor(Color.BLACK);
+            g2d.drawLine(x_text, y_text, x_text, y_text + 10);
+            g2d.drawLine(x_text, y_text + 10, x_text + 10, y_text + 10);
+            g2d.drawString(textBuffer, x_text, y_text + 10);
         }
         // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
@@ -86,6 +94,15 @@ public class MainWindow extends JPanel implements MouseListener, MouseMotionList
 
     void enableEditTextMode() {
         editTextEnabled = true;
+        x_text = x; y_text = y;
+        textBuffer = "";
+        setFocusable(true);
+        requestFocusInWindow();
+    }
+
+    void addText(char c) {
+        textBuffer += c;
+        repaint();
     }
 
     void addSetaFim() {
