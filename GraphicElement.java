@@ -89,6 +89,14 @@ class GraphicElement {
             g2d.fillPolygon(x_l, y_l, 4);
         }
     }
+
+    void setLabel(String s) {
+        label = s;
+    }
+
+    String getLabel() {
+        return label;
+    }
 }
 
 //! Tipo do Elemento grafico, um unico objeto representa

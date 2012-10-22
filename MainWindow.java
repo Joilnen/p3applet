@@ -105,6 +105,15 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
         repaint();
     }
 
+    void addObjectText() {
+        editTextEnabled = false;
+        GraphicElement g = new GraphicElement(GraphicElementType.NODE_MENS);
+        g.setLabel(textBuffer);
+        g.setX(x_text); g.setY(y_text);
+        g.setDx(100); g.setDy(20);
+        NodePool.getInstance().addNode(g);
+    }
+
     void addSetaFim() {
         setaTracing = false;
         NodePool.getInstance().addNode(seta);
@@ -143,8 +152,12 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
                 g2d.setColor(Color.BLACK);
                 g2d.drawLine(ge.getX(), ge.getY(), ge.getDx(), ge.getDy());
             }
-        }
+            else if(ge.getType() == GraphicElementType.NODE_MENS) {
+                g2d.setColor(Color.BLACK);
+                g2d.drawString(ge.getLabel(), ge.getX(), ge.getY() + 10);
 
+            }
+        }
     }
 }
 

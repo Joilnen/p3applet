@@ -182,6 +182,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void keyTyped(KeyEvent e) {
         char c = e.getKeyChar();
         if(c != KeyEvent.CHAR_UNDEFINED) {
+            if(c == KeyEvent.VK_ENTER) mainWindow.addObjectText();
             mainWindow.addText(c);
             e.consume();
         }
