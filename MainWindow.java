@@ -19,6 +19,7 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     GraphicElement seta;
     public boolean setaTracing = false;
     public boolean editTextEnabled = false;
+    public boolean selectEnabled = false;
     String textBuffer;
     int x_text = 0, y_text = 0;
 
@@ -48,6 +49,23 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
             g2d.drawLine(x_text, y_text + 10, x_text + 10, y_text + 10);
             g2d.drawString(textBuffer, x_text, y_text + 10);
         }
+        else if(selectEnabled) {
+            for(GraphicElement ge: NodePool.getInstance().getElements()) {
+                if(x > ge.getX() && x < (ge.getX() + ge.getDx()) &&
+                   y > ge.getY() && y < (ge.getY() + ge.getDy())) {
+                    g2d.setColor(Color.RED);
+                    if(ge.getType() == GraphicElementType.NODE_PROC) {
+                        g2d.drawRoundRect(ge.getX() - 1, ge.getY() - 1, 151, 101, 15, 15);
+                    }
+                    else if(ge.getType() == GraphicElementType.NODE_DECI) {
+                        int xi = ge.getX(), yi = ge.getY();
+                        int[] x_l = {xi - 1, xi + 50, xi + 101, xi + 50};
+                        int[] y_l = {yi + 50, yi - 1, yi + 50, yi + 101}; 
+                        g2d.drawPolygon( x_l, y_l, 4);
+                    }
+                }
+            }
+        }
         // g2d.drawString("To tentando usar java", 100, 100);
         // new GraphicElement();
         // NodePool n = NodePool.getInstance();
@@ -63,7 +81,12 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseDragged(MouseEvent e) { }
-    public void mouseMoved(MouseEvent e) { x = e.getX(); y = e.getY(); repaint(); } 
+
+    public void mouseMoved(MouseEvent e) { 
+        x = e.getX();
+        y = e.getY();
+        repaint();
+    } 
 
     public void setWithMousePointer(int t) {
         withMousePointer = t;
@@ -83,6 +106,10 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     void addEntity(GraphicElement ge) {
         ge.setX(x);
         ge.setY(y);
+        if(ge.getType() == GraphicElementType.NODE_PROC)
+            ge.setColorPreen(Color.decode("0xF0C3FF")); 
+        else if(ge.getType() == GraphicElementType.NODE_DECI)
+            ge.setColorPreen(Color.decode("0xEDCE9E")); 
         NodePool.getInstance().addNode(ge);
     }
 
@@ -111,21 +138,24 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
         g.setLabel(textBuffer);
         g.setX(x_text); g.setY(y_text);
         g.setDx(100); g.setDy(20);
+        g.setColorPreen(Color.BLACK); 
         NodePool.getInstance().addNode(g);
     }
 
     void addSetaFim() {
         setaTracing = false;
+        seta.setColorPreen(Color.BLACK);
         NodePool.getInstance().addNode(seta);
     }
 
     void pintaObjeto(Graphics2D g2d) {
 
         for(GraphicElement ge: NodePool.getInstance().getElements()) {
+            g2d.setColor(ge.getColorPreen());
+
             if(ge.getType() == GraphicElementType.NODE_PROC) {
                   // Descomentar para ter borda
                   // g2d.setColor(Color.BLACK);
-                  g2d.setColor(Color.decode("0xF0C3FF"));
                   g2d.fillRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15); 
                   // g2d.fillRoundRect(ge.getX()+1, ge.getY()+1, 150 - 1, 100 - 1, 15, 15); 
             }
@@ -145,17 +175,16 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
                   // y_l[1]++;
                   // y_l[2];
                   // y_l[3]--;
-                  g2d.setColor(Color.decode("0xEDCE9E"));
+                  // g2d.setColor(Color.decode("0xEDCE9E"));
                   g2d.fillPolygon(x_l, y_l, 4);
             }
             else if(ge.getType() == GraphicElementType.NODE_CONN) { 
-                g2d.setColor(Color.BLACK);
+                // g2d.setColor(Color.BLACK);
                 g2d.drawLine(ge.getX(), ge.getY(), ge.getDx(), ge.getDy());
             }
             else if(ge.getType() == GraphicElementType.NODE_MENS) {
-                g2d.setColor(Color.BLACK);
+                // g2d.setColor(Color.BLACK);
                 g2d.drawString(ge.getLabel(), ge.getX(), ge.getY() + 10);
-
             }
         }
     }
@@ -169,6 +198,7 @@ class WithMousePointerType {
     static int WRITE_MENS = 1003;
     static int DECISION_GRAY_BORDER = 1004;
     static int WRITE_LABEL = 1005;
+    static int SELECT = 1006;
 }
 
 

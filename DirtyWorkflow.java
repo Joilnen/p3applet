@@ -9,7 +9,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
+import javax.swing.JTextField;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
@@ -18,6 +20,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.Container;
+import java.awt.Color;
 
 //! Classe inicial 
 public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotionListener, KeyListener{
@@ -26,7 +29,9 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     JMenuBar jmenuBar;
     int width = 1330, height = 650;
 
-    JToggleButton b_proc, b_deci, b_seta, b_mens, b_label;
+    JToggleButton b_proc, b_deci, b_seta, b_mens, b_sele, b_yellow, b_roxo, b_green;
+    JTextField e_label;
+    JLabel l1;
     FlowLayout layout;
     MainWindow mainWindow;
 
@@ -88,13 +93,24 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
         p.add(b_proc = new JToggleButton("Processo"));
         p.add(b_seta = new JToggleButton("Seta"));
         p.add(b_deci = new JToggleButton("Decisao"));
-        p.add(b_label = new JToggleButton("Label"));
+        p.add(b_sele = new JToggleButton("Selecao"));
         p.add(b_mens = new JToggleButton("Mensagem"));
+        p.add(l1 = new JLabel("Label"));
+        p.add(e_label = new JTextField());
+        p.add(b_yellow = new JToggleButton("Amarelo"));
+        p.add(b_roxo = new JToggleButton("Roxo"));
+        p.add(b_green = new JToggleButton("Verde"));
+        l1.setVisible(false);
+        e_label.setVisible(false);
+        b_yellow.setVisible(false);
+        b_roxo.setVisible(false);
+        b_green.setVisible(false);
+
 
         b_proc.addMouseListener(this);
         b_seta.addMouseListener(this);
         b_deci.addMouseListener(this);
-        b_label.addMouseListener(this);
+        b_sele.addMouseListener(this);
         b_mens.addMouseListener(this);
     }
 
@@ -109,7 +125,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                 if(e.getSource() != b_proc) b_proc.setSelected(false);
                 if(e.getSource() != b_seta) b_seta.setSelected(false);
                 if(e.getSource() != b_deci) b_deci.setSelected(false);
-                if(e.getSource() != b_label) b_label.setSelected(false);
+                if(e.getSource() != b_sele) b_sele.setSelected(false);
                 if(e.getSource() != b_mens) b_mens.setSelected(false);
 
                 mainWindow.setWithMousePointer(WithMousePointerType.NONE);
@@ -127,8 +143,9 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                     mainWindow.setWithMousePointer(WithMousePointerType.DECISION_GRAY_BORDER);
                     // mainWindow.repaint();
                 }
-                else if(e.getSource() == b_label) {
-
+                else if(b_sele.isSelected()) {
+                    mainWindow.selectEnabled = true;
+                    mainWindow.setWithMousePointer(WithMousePointerType.SELECT);
                 }
                 else if(b_mens.isSelected()) {
                     mainWindow.setWithMousePointer(WithMousePointerType.WRITE_MENS);
@@ -162,8 +179,8 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                     // mainWindow.repaint();
                     mainWindow.addEntity(g);
                 }
-                else if(e.getSource() == b_label) {
-
+                else if(b_sele.isSelected()) {
+                    // mainWindow.selectEnabled = true;
                 }
                 else if(b_mens.isSelected()) {
                     mainWindow.enableEditTextMode();

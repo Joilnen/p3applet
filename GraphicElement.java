@@ -97,6 +97,14 @@ class GraphicElement {
     String getLabel() {
         return label;
     }
+
+    void setColorPreen(Color c) {
+        color_preen = c;
+    }
+
+    Color getColorPreen() {
+        return color_preen;
+    }
 }
 
 //! Tipo do Elemento grafico, um unico objeto representa
