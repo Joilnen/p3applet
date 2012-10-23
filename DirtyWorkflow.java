@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
+import javax.swing.Box;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -87,16 +88,31 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
     public void addComponentsToPane(final Container pane) {
 
         JPanel p = new JPanel();
+        // p.setLayout(new BorderLayout());
+        BoxLayout boxLay = new BoxLayout(p, BoxLayout.Y_AXIS); 
+        // boxLay.setMinimumSize(b_proc.getSize().width, 600);
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-        // p.setLayout(new BoxLayout());
         pane.add(p, BorderLayout.WEST);
+
         p.add(b_proc = new JToggleButton("Processo"));
+        b_proc.setMaximumSize(new Dimension(Short.MAX_VALUE, 100));
+
         p.add(b_seta = new JToggleButton("Seta"));
+        b_seta.setMaximumSize(new Dimension(Short.MAX_VALUE, 100));
+
         p.add(b_deci = new JToggleButton("Decisao"));
-        p.add(b_sele = new JToggleButton("Selecao"));
+        b_deci.setMaximumSize(new Dimension(Short.MAX_VALUE, 100));
+
+
         p.add(b_mens = new JToggleButton("Mensagem"));
+        b_mens.setMaximumSize(new Dimension(Short.MAX_VALUE, 100));
+
+        p.add(b_sele = new JToggleButton("Selecao"));
+        b_sele.setMaximumSize(new Dimension(Short.MAX_VALUE, 100));
+
         p.add(l1 = new JLabel("Label"));
         p.add(e_label = new JTextField());
+        e_label.setMaximumSize(new Dimension(Short.MAX_VALUE, 25));
         p.add(b_yellow = new JToggleButton("Amarelo"));
         p.add(b_roxo = new JToggleButton("Roxo"));
         p.add(b_green = new JToggleButton("Verde"));
@@ -181,7 +197,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                         mainWindow.addSetaFim();
                         mainWindow.setaTracing = false;
                     }
-                    else  {
+                    else {
                         mainWindow.setaTracing = true;
                         mainWindow.addSetaInicio(new GraphicElement(GraphicElementType.NODE_CONN));
                     }
