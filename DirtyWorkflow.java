@@ -146,12 +146,26 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                 else if(b_sele.isSelected()) {
                     mainWindow.selectEnabled = true;
                     mainWindow.setWithMousePointer(WithMousePointerType.SELECT);
+
+                    l1.setVisible(true);
+                    e_label.setVisible(true);
+                    b_yellow.setVisible(true);
+                    b_roxo.setVisible(true);
+                    b_green.setVisible(true);
                 }
                 else if(b_mens.isSelected()) {
                     mainWindow.setWithMousePointer(WithMousePointerType.WRITE_MENS);
                 }
                 else
                     mainWindow.setWithMousePointer(WithMousePointerType.NONE);
+
+                if(b_sele.isSelected() == false) {
+                    l1.setVisible(false);
+                    e_label.setVisible(false);
+                    b_yellow.setVisible(false);
+                    b_roxo.setVisible(false);
+                    b_green.setVisible(false);
+                }
             }
             else {
                 if(b_proc.isSelected()) {
@@ -180,7 +194,7 @@ public class DirtyWorkflow extends JApplet implements MouseListener, MouseMotion
                     mainWindow.addEntity(g);
                 }
                 else if(b_sele.isSelected()) {
-                    // mainWindow.selectEnabled = true;
+
                 }
                 else if(b_mens.isSelected()) {
                     mainWindow.enableEditTextMode();

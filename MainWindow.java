@@ -49,7 +49,7 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
             g2d.drawLine(x_text, y_text + 10, x_text + 10, y_text + 10);
             g2d.drawString(textBuffer, x_text, y_text + 10);
         }
-        else if(selectEnabled) {
+        else if(selectEnabled && withMousePointer == WithMousePointerType.SELECT) {
             for(GraphicElement ge: NodePool.getInstance().getElements()) {
                 if(x > ge.getX() && x < (ge.getX() + ge.getDx()) &&
                    y > ge.getY() && y < (ge.getY() + ge.getDy())) {
