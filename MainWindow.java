@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPopupMenu;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
@@ -20,6 +21,8 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     public boolean setaTracing = false;
     public boolean editTextEnabled = false;
     public boolean selectEnabled = false;
+    public boolean inSelecting = false;
+    JPopupMenu selectMenu;
     String textBuffer;
     int x_text = 0, y_text = 0;
 
@@ -63,7 +66,10 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
                         int[] y_l = {yi + 50, yi - 1, yi + 50, yi + 101}; 
                         g2d.drawPolygon( x_l, y_l, 4);
                     }
+                    inSelecting = true;
                 }
+                else
+                    inSelecting = false;
             }
         }
         // g2d.drawString("To tentando usar java", 100, 100);
@@ -146,6 +152,14 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
         setaTracing = false;
         seta.setColorPreen(Color.BLACK);
         NodePool.getInstance().addNode(seta);
+    }
+
+    void selectOptions() {
+        if(inSelecting) {
+            selectMenu = new JPopupMenu("Opcoes");
+            selectMenu.setLocation(x + 50, y + 40);
+            selectMenu.setVisible(true);
+        }
     }
 
     void pintaObjeto(Graphics2D g2d) {
