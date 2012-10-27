@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JPopupMenu;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
@@ -68,8 +70,14 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
                     }
                     inSelecting = true;
                 }
-                else
+                else {
+                    if(selectMenu != null) {
+                        selectMenu.setVisible(false);
+                        selectMenu = null;
+                    }
                     inSelecting = false;
+                }
+
             }
         }
         // g2d.drawString("To tentando usar java", 100, 100);
@@ -159,7 +167,11 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     void selectOptions() {
         if(inSelecting) {
             selectMenu = new JPopupMenu("Opcoes");
-            selectMenu.setLocation(x + 50, y + 40);
+            selectMenu.add(new JMenuItem("Mover"));
+            selectMenu.add(new JMenuItem("Setar Label"));
+            selectMenu.add(new JMenuItem("Mudar Cor"));
+
+            selectMenu.setLocation(x + 50, y + 70);
             selectMenu.setVisible(true);
         }
     }
