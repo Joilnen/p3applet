@@ -13,7 +13,7 @@ class GraphicElement {
     Color color_label;
     Color color_descricao;
 
-    String label;
+    String label = "";
     String descricao;
  
     // Nao usar out por enquanto passei a responsabilidade

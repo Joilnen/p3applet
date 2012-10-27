@@ -112,8 +112,10 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
     void addEntity(GraphicElement ge) {
         ge.setX(x);
         ge.setY(y);
-        if(ge.getType() == GraphicElementType.NODE_PROC)
+        if(ge.getType() == GraphicElementType.NODE_PROC) {
             ge.setColorPreen(Color.decode("0xF0C3FF")); 
+            ge.setLabel("Label");
+        }
         else if(ge.getType() == GraphicElementType.NODE_DECI)
             ge.setColorPreen(Color.decode("0xEDCE9E")); 
         NodePool.getInstance().addNode(ge);
@@ -170,8 +172,12 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
             if(ge.getType() == GraphicElementType.NODE_PROC) {
                   // Descomentar para ter borda
                   // g2d.setColor(Color.BLACK);
-                  g2d.fillRoundRect(ge.getX(), ge.getY(), 150, 100, 15, 15); 
+                  int xl, yl;
+                  xl = ge.getX(); yl = ge.getY();
+                  g2d.fillRoundRect(xl, yl, 150, 100, 15, 15); 
                   // g2d.fillRoundRect(ge.getX()+1, ge.getY()+1, 150 - 1, 100 - 1, 15, 15); 
+                  g2d.setColor(Color.BLACK);
+                  g2d.drawString(ge.getLabel(), xl + 20, yl + 20);
             }
             else if(ge.getType() == GraphicElementType.NODE_DECI) {
                   int aqui_x = ge.getX(), aqui_y = ge.getY();
