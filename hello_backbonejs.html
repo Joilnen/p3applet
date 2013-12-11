@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src = "javascripts/jquery.js"></script>
+        <script src = "javascripts/underscore.js"></script>
+        <script src = "javascripts/backbone.js"></script>
+
+        <title> Hello World ! </title>
+    </head>
+    <body>
+        <button id = "add">Adicionar</button>
+        <ul id = "list">
+        </ul>
+
+        <script>
+
+            (function ($) {
+                window.AppView = Backbone.View.extend({
+                    el: $("body"),
+
+                    events: {
+                        "click #add":  "showPrompt",
+                    },
+
+                    showPrompt: function () {
+                        var friend_name = prompt("Who is your friend?");
+                    }
+                });
+
+                var appview = new AppView;
+
+            })(jQuery);
+
+        </script>
+
+    </body>
+</html>
+
+
