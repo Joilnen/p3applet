@@ -87,7 +87,7 @@
             $(".active").removeClass("active");
             $("#item" + id).addClass("active");
 
-            Crafty.audio.play("flag_beep.wav");
+            // Crafty.audio.play("flag_beep.wav");
 
             Crafty("SpriteAnimation").each(function(e) {
                 this.visible = false;

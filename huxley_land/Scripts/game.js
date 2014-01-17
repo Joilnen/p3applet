@@ -59,9 +59,9 @@ Game = {
         });
 
 
-        Crafty.load(["assets/fire_circle_sprite.png", "assets/fire_circle_sprite_min.png", "assets/musica.wav", "assets/flag_beep.wav"], function () {
-            Crafty.audio.setChannels(5);
-            Crafty.audio.play("musica.wav", -1);
+        Crafty.load(["assets/fire_circle_sprite.png", "assets/fire_circle_sprite_min.png"], function () {
+            // Crafty.audio.setChannels(5);
+            // Crafty.audio.play("musica.wav", -1);
             Crafty.scene("main"); //when everything is loaded, run the main scene
         });
 
