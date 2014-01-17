@@ -61,7 +61,7 @@
         {
             var _this = this;
             $.ajax({
-                url: "http://joilnen.github.io/p3applet/huxley_land/_data.json",
+                url: "https://raw2.github.com/Joilnen/p3applet/gh-pages/huxley_land/_data.json",
                 dataType: 'json',
                 data: {},
                 async: false,
