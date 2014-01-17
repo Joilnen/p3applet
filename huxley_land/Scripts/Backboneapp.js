@@ -1,6 +1,7 @@
 ﻿$(document).ready(function ()
 {
     var Item = Backbone.Model.extend({
+
     });
 
     var ItemCollection = Backbone.Collection.extend({
@@ -60,7 +61,7 @@
         {
             var _this = this;
             $.ajax({
-                url: "_data.json",
+                url: "http://joilnen.github.io/p3applet/huxley_land/_data.json",
                 dataType: 'json',
                 data: {},
                 async: false,
@@ -96,7 +97,6 @@
                 }
             });
 
-
             view.render();
         }
     });
@@ -104,4 +104,5 @@
     var navigationRouter = new NavigationRouter;
     Backbone.history.start();
 });
+
 
