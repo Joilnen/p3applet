@@ -1,0 +1,29 @@
+﻿[	
+	{
+		"position": 1,
+		"title": "Hello World !",
+		"content": "<p> Hello World é uma forma comum de referir-se a um código mínimo, um exemplo simples em alguma linguagem, no nosso caso condideraremos a linguagem de programação C</p>"
+	},
+	{
+		"position": 2,
+		"title": "A linguagem de programação C",
+        "content": "<p> A linguagem de programação para computadores C foi criada no começo da década de 70 do século XX, pelos pesquisadores Dennis Ritchie e Brian Kernighan </p>"
+	},
+	{
+		"position": 3,
+		"title": "Controles de fluxo",
+		"content": "<p> Dentre os principais comandos de controle de fluxo da linguagem C, temos o if, then, else, switch </p>"
+	},
+	{
+		"position": 4,
+		"title": "Estruturas e funções",
+		"content": "<p> Pra facilitar a estruturação de dados na linguagem temos o Struct, e para dividir o processamento em funções lógicamente distribuídas temos as funções </p>"
+	},
+	{
+		"position": 5,
+		"title": "Ponteiros",
+		"content": "<p> A C permite q você manipule diretamente endereços de memória com uma variável especial denominada ponteiro </p>"
+	}
+]
+
+
