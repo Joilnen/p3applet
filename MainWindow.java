@@ -224,13 +224,13 @@ public class MainWindow extends JPanel { // implements MouseListener, MouseMotio
 
 //! Tipo de desenho feio quando for fazer algum desses no canvas
 class WithMousePointerType {
-    static int NONE = 1000;
-    static int PROCESS_GRAY_BORDER = 1001;
-    static int CONNECT_ONE_TO_ONE = 1002;
-    static int WRITE_MENS = 1003;
-    static int DECISION_GRAY_BORDER = 1004;
-    static int WRITE_LABEL = 1005;
-    static int SELECT = 1006;
+    final static int NONE = 1000;
+    final static int PROCESS_GRAY_BORDER = 1001;
+    final static int CONNECT_ONE_TO_ONE = 1002;
+    final static int WRITE_MENS = 1003;
+    final static int DECISION_GRAY_BORDER = 1004;
+    final static int WRITE_LABEL = 1005;
+    final static int SELECT = 1006;
 }
 
 
